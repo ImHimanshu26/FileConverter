@@ -21,6 +21,31 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Add PWA meta tags and service worker
+def add_pwa_tags():
+    st.markdown("""
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#ff6b6b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="File Converter">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    }).catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+    """, unsafe_allow_html=True)
+
+add_pwa_tags()
+
 # Initialize session state
 if 'converted_files' not in st.session_state:
     st.session_state.converted_files = []

@@ -110,3 +110,14 @@ Preferred communication style: Simple, everyday language.
 - File type validation beyond extension checking
 - Size limits to prevent resource exhaustion
 - Temporary file isolation
+
+## Recent Changes
+
+### July 25, 2025 - PWA Conversion for Play Store
+- Converted web app to Progressive Web App (PWA) for Google Play Store publishing
+- Added PWA manifest file with app metadata and icons
+- Implemented service worker for offline functionality and caching
+- Created custom app icons (192px and 512px) with conversion theme
+- Added PWA meta tags and service worker registration to main app
+- Created comprehensive Play Store publishing guide
+- Configured Streamlit for static file serving
